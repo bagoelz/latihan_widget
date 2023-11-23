@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latihan_widget/widgets/cardheader.dart';
 import 'package:latihan_widget/widgets/header.dart';
+import 'package:latihan_widget/widgets/scrollBehaviour.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -104,22 +105,17 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 64,
             ),
-            HeaderWidget(),
-            SizedBox(
+            const HeaderWidget(),
+            const SizedBox(
               height: 20,
             ),
             LayoutBuilder(builder:
                 (BuildContext context, BoxConstraints viewportConstraints) {
-              return SingleChildScrollView(
-                child: Container(
-                    color: Colors.amber,
-                    height: MediaQuery.of(context).size.height / 4,
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: CardHeaders()),
-              );
+              return ScrollConfiguration(
+                  behavior: MyCustomScrollBehavior(), child: CardHeaders());
             }),
           ],
         ),
